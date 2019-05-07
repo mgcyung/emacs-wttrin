@@ -49,7 +49,7 @@
 
 (defun wttrin-query (city-name)
   "Query weather of CITY-NAME via wttrin, and display the result in new buffer."
-  (let ((raw-string (wttrin-fetch-raw-string city-name)))
+  (let ((raw-string (wttrin-fetch-raw-string (concat city-name "?m"))))
     (if (string-match "ERROR" raw-string)
         (message "Cannot get weather data. Maybe you inputed a wrong city name?")
       (let ((buffer (get-buffer-create (format "*wttr.in - %s*" city-name))))
